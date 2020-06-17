@@ -1,0 +1,35 @@
+CREATe table loaner(
+    lid int PRIMARY key AUTO_INCREMENT,		
+    lfname varchar(255) not null,
+    llname varchar (255) not null,
+    pno varchar(255) UNIQUE,
+    email varchar(255)  NOT null,
+    address varchar(255) not null,
+    aid varchar(15) 
+    
+    );
+    
+    
+
+CREATE table borrow(
+     bid int PRIMARY KEY AUTO_INCREMENT,
+    id int,
+    lid int,
+    amount int not null,
+    dat Date not null,
+    interest float not null,
+    edat date not null,
+    FOREIGN key(id) REFERENCES login(id),
+    FOREIGN key (lid) references loaner(lid)
+    );
+
+
+create TABLE transact (
+    tid int primary key AUTO_INCREMENT,
+    lid int,
+    id int,
+    amount_paid int not null,
+    dat date not null,
+    FOREIGN key(lid) REFERENCES loaner(lid),
+    FOREIGN key(id) REFERENCES login(id)
+    );
